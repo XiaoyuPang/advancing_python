@@ -13,6 +13,8 @@ multiprocessing：
 		
 	Pool类：
 		p = Pool(最大进程数）
+
+		p.map(func,list)
 		for i in range(任务数): 
 			p.apply_async(函数名，(参数))		#p.apply_async异步的(同时进行)，p.apply是同步的(一个子进程执行完才到下一个)				
 		p.close()	#进程开始	
