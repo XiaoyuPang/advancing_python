@@ -1,4 +1,4 @@
-'''抓取今日头条街拍图片'''
+'''分析ajax 抓取今日头条街拍图片'''
 
 import requests
 from requests import RequestException
@@ -7,11 +7,9 @@ import re
 import time
 
 x = 0
-
 class Toutiao:
     def __init__(self):
         self._headers = {
-    
             'authority': 'www.toutiao.com',
             'cache-control': 'max-age=0',
             'upgrade-insecure-requests': '1',
@@ -22,7 +20,6 @@ class Toutiao:
             'accept-encoding': 'gzip, deflate, br',
             'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
             'cookie': 'tt_webid=6609203078057461262; tt_webid=6609203078057461262; WEATHER_CITY=%E5%8C%97%E4%BA%AC; UM_distinctid=166491e30ed452-08f4128769ff6a-3c7f0257-100200-166491e30ee61; tt_webid=6609203078057461262; csrftoken=919bd60a2e36efbade63cb66116afcd2; __tasessionId=q6wix21rr1538901079793; CNZZDATA1259612802=966679360-1538820661-https%253A%252F%252Fwww.google.com%252F%7C1538896834',
-
         }
         self._page_url = 'https://www.toutiao.com/search_content/'
         self._gallery_url = 'https://toutiao.com'
@@ -45,10 +42,9 @@ class Toutiao:
             else:
                 print('offset 溢出，已爬完')
                 return None
-
         except RequestException:
-            print('requests errror,in url:',data.url)
-            return None
+            print('requests page_get() error')
+            return self.page_get(offset)
 
     #解析page，获得20个相集的url地址和title，返回相集list
     def page_parse(self,page):
@@ -66,7 +62,6 @@ class Toutiao:
                             'source_url':gallery['source_url']
                         }
                     )
-
             return gallery_list
         else:
             return None
@@ -95,11 +90,9 @@ class Toutiao:
                 except:
                     print("regrex error")
                     return None
-            
         except RequestException:
-            print('requests error: self.gallery_get_url() ')
-            return None
-        
+            print('requests gallery_get_url() error')
+            return self.gallery_get_url(source_url)
 
     #把每个相集的url list和title整合成字典，作为最小单元存储
     def gallery_item(self,gallery_list):
@@ -127,11 +120,9 @@ class Toutiao:
             for item in self.gallery_item(gallery_list):
                 self.store(item)
 
-
     def __call__(self):
         offset = 0
         while True:
-            
             pad = self.page_get(offset)
             if pad:
                 self.main(offset)
@@ -140,9 +131,7 @@ class Toutiao:
                 print('done!,offset:',offset-20)
                 break
 
-
 if __name__ == '__main__':
-
     toutiao = Toutiao()
     toutiao()
     print('\n','total gallery:',x)

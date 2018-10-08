@@ -1,6 +1,4 @@
-'''
-抓取猫眼电影top100，尝试使用re，bs，pyquery三种方式
-'''
+'''抓取猫眼电影top100，尝试使用re，bs，pyquery三种方式'''
 
 import json
 from multiprocessing import Pool
@@ -10,13 +8,11 @@ import re
 from bs4 import BeautifulSoup 
 from pyquery import PyQuery
 
-
 class Spider():
     def __init__(self):
         self._offset = [i*10 for i in range(10)]
         self._start_url = 'http://maoyan.com/board/4?offset='
-        self._headers ={
-
+        self._headers = {
             'authority': 'maoyan.com',
             'cache-control': 'max-age=0',
             'upgrade-insecure-requests': '1',
@@ -37,10 +33,9 @@ class Spider():
                 return None
             html.encoding = 'utu-8'
             return html.text
-
         except RequestException:
             print('requests get error!')
-            return None
+            return self.get(offset)
     
     def parse(self,html):
         '''使用正则'''
@@ -58,9 +53,7 @@ class Spider():
         #            'actor':item[3],
         #            'time':item[4],
         #            'score':item[5] + item[6]
-        #
         #        }
-
 
         '''使用bs4'''
         #soup = BeautifulSoup(html,'lxml').select('.board-wrapper')
@@ -76,6 +69,7 @@ class Spider():
         #            'releasetime':item.select('.releasetime')[0].get_text(),
         #            'score':item.select('.integer')[0].text + item.select('.fraction')[0].text
         #        }
+
         '''使用pyquery'''
         pq = PyQuery(html)('.board-wrapper')('dd').items()
         for item in pq:
@@ -88,7 +82,6 @@ class Spider():
                         'releasetime':item('.releasetime').text(),
                         'score':item('.integer').text() + item('fraction').text()
                     }
-
             else:
                 print('parse error!')
                 return None
@@ -103,12 +96,10 @@ class Spider():
         for item in self.parse(html):
             self.store(item)
 
-
     def __call__(self):
         #开启多进程
         p = Pool()
         p.map(self.main,self._offset)
-        
         
 if __name__ == "__main__":
     spider = Spider()
