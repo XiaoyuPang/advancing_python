@@ -97,11 +97,11 @@ class Toutiao:
         if gallery_list:
             for gallery in gallery_list:
                 url_list = self.gallery_get_url(gallery['source_url'])
-                item = {
-                        'title':gallery['title'],
-                        'url':url_list
+                yield {
+                    'title':gallery['title'],
+                    'url':url_list
                 }
-                yield item
+                
 
     #存储一个相集
     def store(self,item):
