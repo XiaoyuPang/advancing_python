@@ -42,9 +42,7 @@ class Spider():
         #pattern = re.compile('<dd>.*?board-index.*?">(\d+)</i>.*?data-src="(.*?jpg).*?boarditem-click.*?>(.*?)</a></p>' +
         #'.*?"star">(.*?)</p>.*?releasetime">(.*?)</p>.*?"integer">(.*?)</i>.*?fraction">(.*?)</i>', re.S)
         #content = pattern.findall(html)
-        #
         #if content != None:
-        #    
         #    for  item in content:
         #        yield {
         #            'top':item[0],
@@ -59,9 +57,7 @@ class Spider():
         #soup = BeautifulSoup(html,'lxml').select('.board-wrapper')
         #for item in soup[0].find_all('dd'):
         #    if item != None:
-        #        
         #        yield{
-        #
         #            'index':item.i.get_text(),
         #            'pic':item.select('.board-img')[0]['data-src'].partition('.jpg')[0] + '.jpg',
         #            'name':item.select('.name')[0].get_text(),
@@ -81,7 +77,7 @@ class Spider():
                         'star':item('.star').text().strip(),
                         'releasetime':item('.releasetime').text(),
                         'score':item('.integer').text() + item('fraction').text()
-                    }
+                }
             else:
                 print('parse error!')
                 return None

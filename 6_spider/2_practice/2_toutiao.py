@@ -52,7 +52,6 @@ class Toutiao:
             '''test '''
             global x 
             x += len(page['data'])
-
             gallery_list = []
             for gallery in page['data']:
                 if 'title' in gallery and 'source_url' in gallery:
@@ -82,7 +81,6 @@ class Toutiao:
                             url_list = []
                             for urls in data['sub_images']:
                                 url_list.append(urls['url'])
-                        
                             return url_list
                         except:
                             print('json error')
@@ -102,7 +100,7 @@ class Toutiao:
                 item = {
                         'title':gallery['title'],
                         'url':url_list
-                    }
+                }
                 yield item
 
     #存储一个相集
