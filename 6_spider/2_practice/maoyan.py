@@ -3,6 +3,7 @@
 '''
 
 import json
+from multiprocessing import Pool
 import requests
 from requests.exceptions import RequestException
 import re 
@@ -87,18 +88,17 @@ class Spider():
         with open('./maoyan.json','a',encoding='utf-8') as f:
             f.write(json.dumps(item,ensure_ascii=False) + '\n')
             
+    def main(self,url):
+        html = self.get(url)
+        for item in self.parse(html):
+            self.store(item)
+
+
     def __call__(self):
-        for offset in self._offset:
-            url = self._start_url + str(offset)
-            html = self.get(url)
-            if html != None:
-                items = self.parse(html)
-                if items != None:
-                    for item in items:
-                        self.store(item)
-            else:
-                print('something wrong')
-                break
+        #开启多进程
+        p = Pool(10)
+        p.
+
         
                       
 

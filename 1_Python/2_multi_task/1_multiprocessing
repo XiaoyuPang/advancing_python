@@ -1,0 +1,98 @@
+进程概念：	
+	一个可执行的代码叫做程序。运行中的程序叫进程。
+	
+并行和并发：
+	多个进程同一个时刻运行，叫做并行。并行只能在多核cpu上实现
+	多个进程在同一时间段内同时进行，叫做并发。并发的原理是单核cpu在极端的时间内快速的在进程之间切换。
+	
+fork创建子进程：
+	fork()为Python里的os模块的一个方法，只能在类Unix上调用，Windows没有fork，因此可以用python的跨平台模块multiprocessing实现多进程。
+	
+	主（父）进程和子进程：一个程序运行就是一个主进程，由主进程创建的进程叫子进程。程序运行到
+		ret = os.fork()会为主进程创建一个大于0的值（ret值等于子进程的pid)，子进程ret值为0。使用if判断ret，分别执行主进程和子进程的代码，
+		从而实现fork创建子进程，os.fork()之前的代码都是主进程的，之后的代码主子都会执行一次
+		
+	主、子进程的先后顺序：主、子进程的执行顺序不可知，由操作系统确定。主进程想要结束不会等待子进程完结才结束。
+	
+	全局变量在多个进程中不共享，即除了ret的if条件判断主子进程代码，其余代码都各进程拷贝一份，比如即便是全局变量被主进程修改了，在子进程中也不会变。
+			
+	pid ：操作系统为每个执行的进程分配一个pid用于识别进程（一般最大值为65535），os.getpid()获取当前进程的pid，
+		os.getppid()获取父进程的pid。注：ppid-->parent pid。
+	
+	多次fork()可以让创建出来的进程再创建进程。避免fork炸弹。
+	
+multiprocessing模块：
+	Process类：
+		p = Process(target=目标函数) p.start()，p.join()。
+			与fork不同：Process创建的子进程只会执行target指定的目标函数，且主进程等待所有子进程结束才结束。
+			相同：子进程对全局变量的修改不会改变主进程的全局变量。
+		
+		p.join()的作用：由于主子进程的执行顺序的不确定性，很有可能主进程先执行完了，一直处在等待子进程执行完再结束的状态。使用join之后，
+			p.join()之后的代码会等代p.start()执行完后才执行，join相当于堵塞。
+			
+		Process子类：创建进程还有另一种方法：在自己定义的类里继承Process。重写Process的run方法，start()会调用run，
+			具体：http://www.aiexp.me/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/01day/section.2.2.html
+			
+	进程池Pool：
+		p = Pool(最大进程数） for i in range(10): p.apply_async(函数名，(参数))
+		Pool与Pocess的不同：Pool创建的进程，其主进程不等子进程结束就先结束，主进程一结束所有子进程的任务没执行完都要结束，
+			因此要加：p.close() p.join() 。Pool的主进程一般用来等待，任务都是子进程执行。
+		
+		apply堵塞式添加任务：把async去掉就是堵塞式，进程一个执行完再执行下一个，就是堵塞。apply_async是非堵塞。
+		
+	进程间通信Queue（队列）：
+		from multiprocessing import Queue  #注意，有个queue模块提供的Queue()用于线程通信，注意区分
+		q = Queue(入队个数最大值，也可不写） q.put(),q.get(),q.empty(),q.full(),q.get_nowait(),q.put_nowait(),q.qsize()。
+		
+		在Process创建的子进程传入Queue队列，达到进程间通信。
+		 	q = Queue qw = Process(target=xxx,args=(q,)) qr = Process(target=xx,args=(q,))
+		进程池Pool间的进程通信：Queue创建的队列不能在Pool进程池间通信，使用Manager().Queue()代替Queue()便可。
+			from multiprocessing import Manager,Pool  
+			p = Pool()
+			q = Manager().Queue()
+			p.apply(xxx,(q,))
+			p.close()
+			p.join()
+			
+总结：
+	多进程的创建用Process有两种方式，但是多个进程同时执行必须用for或while同时生成，因为程序是从上往下执行的，Process会阻塞。
+		Pool的进程池，apply不加async也会堵塞。
+	进程和进程之间默认是无关联的，不能完成数据的共享。进程间 通信有命名管道，无名管道，内存共享，队列，网络功能如socket等等。
+	
+		 	
+		 
+		
+		
+		
+	
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			
+			
+		
+		
+	
