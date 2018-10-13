@@ -196,7 +196,7 @@ floor地板除：
 				另外一种方式是使用列表推导式时把[]改成(),如： y = (x for x in range(10))
 		
 	生成器:	
-		generator是一种特殊的iterator，因为它不用构建__iter__和__next__,而是直接使用关键字yield。所有使用了yield的函数都是生成器。
+		generator是一种特殊的迭代器，因为它不用构建__iter__和__next__,而是直接使用关键字yield。所有使用了yield的函数都是生成器。
 		yield与return的区别：yield返回生成器，实际上，凡是return iterable的都可以用yield代替
 	
 	
