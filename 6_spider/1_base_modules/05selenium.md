@@ -1,10 +1,15 @@
 # selenium 简介：
-    是一个用来做自动化测试的工具，支持多种浏览器(如：Chrome、Firefox、PhantomJS，驱动浏览器还需要下载指定的浏览器驱动，如chrome需要ChromeDriver)。
-    主要是发一些指令驱动浏览器做各种动作，比如：跳转、点击、输入、下拉等等操作。
-    在爬虫中，主要用selenium解决JavaScript渲染问题，因为有些网页是由js渲染的，requests无法获取后无法渲染。
+    是什么？
+        ：一个用来做web自动化测试的工具，支持多种浏览器(如：Chrome、Firefox、PhantomJS）。
+    做什么？
+        ：主要是发一些指令驱动浏览器做各种动作，比如：跳转、点击、输入、下拉等等操作。
+    在爬虫中应用？
+        ：在爬虫中，应用selenium解决JavaScript渲染问题，因为有些网页是由js渲染的，requests获取后无法执行js来渲染。
 
 # 安装:
-    pip3 install selenium   #安装chromedriver：把chromedriver复制环境变量，如/usr/bin
+```python {.line-numbers}
+pip3 install selenium   #安装chromedriver：把chromedriver复制环境变量，如/usr/bin
+```
 
 # 基本使用：
 ```python {.line-numbers}
@@ -170,13 +175,14 @@ browser.switch_to_window(browser.window_handles[0])         #切换回第一个�
 ```
 
 # 小结：
-* selenium需要配合浏览器一起使用,需要安装对应浏览器的webdriver。
-* 使用场景：web页面由js动态渲染，并且无法分析拿到后台api，这时只能靠浏览器渲染后获取数据。
-* selelnium+browser这种方式做爬虫非常低效，尽量避开使用。
+1. selenium需要配合浏览器一起使用,需要安装对应浏览器的webdriver。
+2. 使用场景：web页面由js动态渲染，并且无法分析拿到后台api，这时只能靠浏览器渲染后获取数据。
+3.  selelnium+browser这种方式做爬虫非常低效，尽量避开使用。
 # 参考
 * [selenium-python中文文档](https://selenium-python-zh.readthedocs.io/en/latest/)
-* [《python3网络爬虫开发实战》](https://germey.gitbooks.io/python3webspider/1.2.2-Selenium%E7%9A%84%E5%AE%89%E8%A3%85.html)
+* [《python3网络爬虫开发实战》](https://germey.gitbooks.io/python3webspider/7.1-Selenium%E7%9A%84%E4%BD%BF%E7%94%A8.html)
 * [崔广宇：爬虫和反爬虫现状解析](https://gitbook.cn/books/590be8980067927e7860e96e/index.html)
+* [python爬虫的一些总结](http://ningning.today/2015/10/04/python/Python%E7%88%AC%E8%99%AB%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/)
 
 
 
