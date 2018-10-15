@@ -11,7 +11,8 @@
 ```
 BeautifulSoup分为三部分：1.标签选择器、2.css选择器、3.标准选择器（结合了1和2）
 
-
+# 安装
+    pip3 install bs4
 
 
 # 使用：

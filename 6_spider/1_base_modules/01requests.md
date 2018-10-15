@@ -1,7 +1,8 @@
 
-#requests简介：
+# requests简介：
 	“唯一的一个非转基因的 Python HTTP 库，人类可以安全享用”
-
+# 安装 
+	pip3 install requests
 # 基础用法:
 请求:
 ```python {.line-numbers}
