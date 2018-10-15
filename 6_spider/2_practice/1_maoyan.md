@@ -1,4 +1,4 @@
-```python
+```python {.line-numbers}
 '''抓取猫眼电影top100，尝试使用re，bs，pyquery三种方式'''
 import re 
 import json

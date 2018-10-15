@@ -1,7 +1,8 @@
-简介：
-    强大又灵活的网页解析库。如果觉得正则写起来太麻烦，beautifulsoup语法难记。
-    只要熟悉jquery，pyquery是很好的代替正则和beautifulsoup的选择。
-    pip install pyquery
+# PyQuery简介：
+    强大又灵活的网页解析库。
+    如果觉得正则写起来太麻烦，beautifulsoup语法难记。只要熟悉jquery，pyquery是很好的代替正则和beautifulsoup的选择。
+# 安装：
+pip install pyquery
 
 
 
