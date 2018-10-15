@@ -1,10 +1,10 @@
+```python
 '''分析ajax 抓取今日头条街拍图片'''
-
 import requests
-from requests import RequestException
 import json
 import re
 import time
+from requests import RequestException
 
 x = 0
 class Toutiao:
@@ -102,7 +102,6 @@ class Toutiao:
                     'url':url_list
                 }
                 
-
     #存储一个相集
     def store(self,item):
         if item:
@@ -133,7 +132,7 @@ if __name__ == '__main__':
     toutiao = Toutiao()
     toutiao()
     print('\n','total gallery:',x)
-
+```
     
     
 
