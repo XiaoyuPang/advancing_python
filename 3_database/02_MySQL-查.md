@@ -1,10 +1,12 @@
- 查询：对数据库的使用，90%的时间都在查询。
+# 查询：
+    对数据库的使用，90%的时间都在查询。
 
-select * from 表名；  
+    select * from 表名；  
     select 列名 from 表名；  #只查看我们想看的列
     select distinct 列名 from 表名； #查看指定列，不重复的内容。
     
-    条件where：  
+* 条件where：  
+
         比较运算符：= , > ,>= ,< ,<= ,!=
             例子：select * from 表名 where id>10;
             
@@ -29,12 +31,14 @@ select * from 表名；
             从高到低：小括号，not，比较运算符，逻辑运算符
             and比or先运算
             
-    聚合(统计)：
+* 聚合(统计)：
+
         为了快速得到统计，提供了5个聚合函数： count(*),max(列),min(列),sum(列),avg(列)
         例子：
             select count(*) from 表名 where isDelect=0; # 查询这张表没被逻辑删除的数据统计。
             
-    分组： group by ...having
+* 分组： group by ...having
+
         把相同的数据分成一个个组，是为了更好的聚合(统计)。
         语法：
             select 列 聚合 from 表名 group by 列；
@@ -47,14 +51,16 @@ select * from 表名；
              对比where和having：
                 where是对原始数据的筛选，having是对group by的结构进行筛选。             
             
-    排序:
+* 排序:
+
         语法：
             select * from 表名  oder by 列1 asc|desc，列2 asc|desc，....
             # 默认不写asc和写asc，都是从小到大。desc是从大到小的排序。排序只是查看的时候排序，并不会真实的修改表内的排序。
             例子：
                 select * from 表名 where id!=0 order by birthday  desc;
                 
-    分页：
+* 分页：
+
         当数据量过大时，在一页中查看数据是一件非常麻烦的事情
         语法：
             select * from 表名  limit start,count；

@@ -1,18 +1,19 @@
-random：
-	random.sample(list,n)	#从指定列表(含n个元素)生成n个不重复的元素
-	random.random()			#生成0-1之间的浮点数
-	random.randint(a,b)		#生成a-b之间的整数
 
-range：
-	range(start，end，step)		#比如range(0,30,3)，生成0,3,6,9
+# random：
+	random.sample(list,n)	#从指定列表(含n个元素)生成n个不重复的元素
+	random.random()		#生成0-1之间的浮点数
+	random.randint(a,b)	#生成a-b之间的整数
+
+# range：
+	range(start，end，step)	#比如range(0,30,3)，生成0,3,6,9
 	
-collections
+# collections
 	Counter(iterable)	#用于统计词频，有方法most_common查看词频排序。
 
-format：
+# format：
 	"{0:032b}.format(10) 	#将10转换程32bit的二进制，其中32前面的0表示不换行，若换成1则换一行。
 	
-floor地板除：
+# floor地板除：
 	在python3中，a/b是浮点除，a//b是整除，也叫地板除，地板除是向下取整的，与c/c++/java的向0取整不同。
 	如：10/3=3.33 10//3=3  , -10/3=-3.33  -10//3=-4  了解了地板除，就可以理解python的取模。
 	
@@ -22,7 +23,8 @@ floor地板除：
 		
 		  
 
-文件操作：
+# 文件操作：
+
 	f = open(文件名，'读\写')
 	f.read(number)	#number的单位为字节，默认不写全部读取
 	f.readlines() # 按照行的方式把文件内容进行一次性读取，并返回一个列表，每一行的数据为一个元素。
@@ -41,7 +43,7 @@ floor地板除：
 	os.path.splitext(filename)		#切分文件名为两部分：名字[0]，后缀名[1]
 	os.path.join(路径,filename)		#获取文件的路径
 
-可迭代对象：
+# 可迭代对象：
 	可变和不可变：
 		比如list和tuple的可变和不可变，都是针对引用（id）而不是值（value），比如a=(1,[1,2,3])，a[1]是可变的，a[1].append(4)不会报错
 	str对象：
@@ -65,7 +67,7 @@ floor地板除：
 	set集合：
 		union联合、intersection交、difference差
 	
-函数：
+# 函数：
 	缺省参数：	def(x,y=20) 不能把y=20放到x前面
 	不定长参数：	*args,**kargs
 	拆包（元组、字典）：	
@@ -88,7 +90,7 @@ floor地板除：
 			"".join(sorted(s, key=lambda x: (x.isdigit(), x.isdigit() and int(x) % 2 == 0, x.isupper(), x)))
 			
 	
-面向对象：
+# 面向对象：
 	(三个要素：封装(全局变量和函数）、继承（子-->父）、多态（定义的时候不确定调用什么功能，真正调用的时才确定调用的是子类还是父类的功能)
 	一切对象都有三个属性：	type、id、value	
 	==和is：		== 判断两个对象的type和value是否相同，is判断id是否相同
@@ -187,7 +189,7 @@ floor地板除：
 							self.name = "test"
 							self.age = "18"
 							self.hello = "hello" 	#对象运行时会报错，没有该属性		
-其他：	
+# 其他：	
 	迭代器：
 		可迭代对象(iterable)：可作用于for循环的数据类型,本质上本质上实现了__iter__()方法：如str、list、dict、set、tuple
 		迭代器(iterator): 

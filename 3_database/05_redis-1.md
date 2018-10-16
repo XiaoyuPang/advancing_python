@@ -1,18 +1,18 @@
-redis:
+# redis:
     与mongaodb一样是非关系型数据库，但mongdb基于磁盘，可利用操作系统缓存。redis是基于内存的，必须全内存。速度非常快。
     用途：比如可以用来做mysql的缓存层。
     存储类型：
         redis：key-value
         memcache：key-value
         mongoDB：文档类型，如json
-安装：
+# 安装：
     sudo apt install redis-server
     默认端口：6379
     启动服务：$sudo service redis start
     启动客户端：$redis-cli   
     配置：配置文件位置redis安装目录下(/etc/redis/redis.conf)，名为redis.conf。 
     
-数据操作命令(不区分大小写)：
+# 数据操作命令(不区分大小写)：
     redis是key-value，键的类型是字符串，值的类型有5种：string，list，set(集合），zset(有序集合),hash
     
     string: 最大能存储512Mb数据:
@@ -86,7 +86,7 @@ redis:
         zcount key min max #返回有序集key中，score值在min和max之间的成员。
         zscore key memeber #返回有序集key中，成员member的score
         
-高级： 
+# 高级： 
     发布订阅  ：
         设计模式中的一种，代码结构开发的方式。redis沿用了发布订阅这种模式，可以实现信息不需要请求就自动推送的功能。
         
@@ -120,7 +120,7 @@ redis:
                 #在slave上读数据
                 get hello
                 
-与python交互：
+# 与python交互：
     安装包redis：$sudo pip3 install redis
     连接： 
         import redis 

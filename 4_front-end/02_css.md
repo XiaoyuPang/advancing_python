@@ -1,4 +1,4 @@
-css页面引入的３种方式：
+# css页面引入的３种方式：
     css引入一般在head中，而不是body后。
 	１．外联式：通过link标签　<link rel="stylesheet" type="text/css" href="css路径">
 	
@@ -10,7 +10,7 @@ css页面引入的３种方式：
 	3.内联式：通过标签的style属性，直接写样式：
 		<div style="width:100px; height:100px " > .... </div>
 		
-css常用文本设置：
+# css常用文本设置：
 	color
 	font-size
 	font-family
@@ -22,12 +22,12 @@ css常用文本设置：
 	text-decoration
 	text-indent
 
-css颜色表示：
+# css颜色表示：
 	１．颜色名字：red,green
 	２．rgb表示：rgb(255,255,0)
 	３．16进制：＃ff0000表示红色
 
-css选择器:
+# css选择器:
 	1.标签选择器：这种选择器的影响范围最大，尽量用在层级选择器中。
 		*{margin:0;padding:0} 这个选择器会影响所有的元素，为所有元素加这个样式。除了设置字体间距一般很少用*。
 		div{color:red} 会影响所有的div标签
@@ -64,7 +64,8 @@ css选择器:
 	
 	注：id选择器的权重比类选择器高
 	
-块元素、内联元素、内联块元素：元素就是标签，布局中有是那种常用标签，块元素、内联元素、内联块元素
+# 块元素、内联元素、内联块元素：
+ 元素就是标签，布局中有是那种常用标签，块元素、内联元素、内联块元素
 	
 	1.块元素(也叫行元素），没有设置宽度，默认为父级的100%,支持全部样式：
 		div,p,ul,li,h1~h6,dl,dt,dd
@@ -78,16 +79,17 @@ css选择器:
 		解决内联元素间隙的方法：１.去掉内联元素之间的换行　２．将内联元素的父级设置font-size为０，内联元素自身再设置font-size
 	3.内联块元素
 
-css盒子模型：
+# css盒子模型：
     margin（外边距）-->border（边框）-->padding（内间距）-->content（定义的内容区大小） 从外往里一个套一个
     注：两个盒子的margin相遇会叠加，取最大值
     盒子大小：box = border + padding + content
     
     在ccs里没有垂直居中，只有水平居中，如text-align：center 其实是水平居中而已。
 
-css元素溢出：overflow   
+# css元素溢出：
+	overflow   
 
-css浮动：
+#css浮动：
     文档流：
         是指盒子按照html标签编写的顺序依次从上到下，从左到右排列，块元素占一行，行内元素在一行之内从左到右排列，先写的先排列，
         后写的排在后面，每个盒子都占据自己的位置。
@@ -97,7 +99,7 @@ css浮动：
         父级上增加属性overflow：hidden
         使用成熟的清浮动样式类，clearfix
         
-css定位：
+# css定位：
     相对定位：position：relative 盒子相对自身定位
             left；
             top ；
@@ -106,7 +108,7 @@ css定位：
     固定定位：position：fixed；
     position：inherit 从父元素继承position属性值
     
-背景background：
+# 背景background：
     background-repeat：
     background-color
     background-position
@@ -114,7 +116,9 @@ css定位：
  
 		
 		
-总结:name、value和id的用途
+#总结:
+name、value和id的用途
+
     name相当于变量名，vaule用于赋值，在js向后台传入参数时会把name和value一起使用。
     id用于唯一标识一个容器，在css和js中都有用到，用来定位具体某个标签，用来调节被id标识的容器的样式（css)和动态效果(js)	
 	css的属性只有两个：id和class，而html的标签属性有很多种。

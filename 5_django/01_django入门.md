@@ -1,4 +1,4 @@
-设计模式
+# 设计模式:
     MVC：
         一种设计模式，MVC的核心思想是：解耦，降低各功能模块之间的耦合性，更容易重构代码，向后兼容性。
         M 表示model，表示对数据库的层的封装
@@ -11,14 +11,14 @@
         T 表示template，负责呈现内容到浏览器
         (django是一个MVT框架)
     
-搭建开发环境：
+# 搭建开发环境：
     虚拟环境：
         $sudo pip3 install virtualenv
         $mkdir myproject && cd myproject && virtualenv venv
         $source venv/bin/activate
         (venv)$pip3 install django  #在venv环境下，用pip安装的包都会在venv下，系统python环境不受影响。加sudo会影响系统。
-        (venv)$pip3 freeze  #显示pip安装的所有包的版本，以后用于导出版本
-        (venv)$deactivate       #退出虚拟环境
+        (venv)$pip3 freeze          #显示pip安装的所有包的版本，以后用于导出版本
+        (venv)$deactivate           #退出虚拟环境
     新建项目：
         $django-admin startproject 项目名  #创建django项目，如创建一个名称为www的项目
         
@@ -47,7 +47,7 @@
         (venv)$python3 manage.py runserver 
         注：运行前，记得在settings文件的INSTALLED_APPS注册应用。
 
-模型M：
+# 模型M：
     使用django models类的目的有两个：
         1.根据这个类生成sql语句并创建表
         2.继承这个类创建的对象，然后对对象进行各式操作，这些操作能映射数据库，去执行insert、update等等语句。
@@ -60,7 +60,7 @@
         
     注意：写好models并且makemigrations和migrate后，不能再往models类添加列，否则会出错，
         
-后台管理：
+# 后台管理：
     (注：创建超级用户前，得先进行一次数据迁移）
     (venv)$python3 manage.py createsuperuser    #创建管理员，输入账号和密码（admin,admin1212)，密码和账户都是保存在数据库中的。
     (venv)$python3 manage.py runserver          #进入127.0.0.1:8000/admin就可以登录
@@ -99,7 +99,7 @@
                 inlines = [HeroInfoInline]
             admin.site.register(BookInfo,BookInfoAdmin)
     
-视图V：
+# 视图V：
      为了工程是上的可重构性，每个app都应该有自己独立的url配置映射。
      settings.py中的ROOT_URLCONF设置了同级目录下的urls.py文件作为解析路由。我们为每个app都配置独立的urls.conf:
         #在urls.py中。 include能包括一个域的url
@@ -119,7 +119,7 @@
         def index(request):
             return HttpResponse('<h1>hello world</h1>')
 
-模板V：
+# 模板T：
     为了工程上的可重构性，每个app都应该有自己独立的templates和statics文件夹。无需修改settings文件，在app根目录下建立templates
     和statics文件夹，django就能自动识别。
 
@@ -130,7 +130,7 @@
         {%xxx%}则可以在里面编写代码。
         
 
-总结工作流程：
+# 总结工作流程：
 	1.创建peoject和app
 	2.setting文件：注册app，修改admin后台语言，数据库
 	3.urls文件注册为app下的urls.py

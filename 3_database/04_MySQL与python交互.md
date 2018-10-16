@@ -1,24 +1,24 @@
-mysql与python3交互：
+# mysql与python3交互：
     需要安装pymysql库：sudo pip3 install pymysql   #(python2则是使用mysqldb这个库）
     使用pymysql：
     
-        import pymysql        
-        # connect()方法建立与数据库的连接,参数有：
-        # host：连接mysql主机，若是本地则localhost
-        # port：默认MySQL端口为3306
-        # db：数据库名称
-        # user：连接mysql的用户名
-        # passwd：MySQL密码
-        # charset：通信采用的编码方式，推荐使用utf8
-连接mysql        
------>  conn = pymysql.connect()       
+    import pymysql        
+    connect()方法建立与数据库的连接,参数有：
+    host：连接mysql主机，若是本地则localhost
+    port：默认MySQL端口为3306
+    db：数据库名称
+    user：连接mysql的用户名
+    passwd：MySQL密码
+    charset：通信采用的编码方式，推荐使用utf8
+# 连接mysql        
+    --->  conn = pymysql.connect()       
         # connect对象的方法有：
         # close()关闭连接
         # commit()事务
         # rollback()事务
         # curse()返回Cursor对象，用于执行sql语句并获得结果
-执行sql        
------>  cursor_1 = conn.cursor()
+# 执行sql        
+    --->  cursor_1 = conn.cursor()
         # Cursor对象的方法：
         # close()关闭
         # execute(operation[,parameters]) 传入sql语句并执行，返回受影响的行数
@@ -27,7 +27,7 @@ mysql与python3交互：
         # fetchall() 执行查询时，获取结果集的所有行。一行构成一个元组，再讲这些元组装入一个元组返回。
         # scroll(value[,mode]) 将行指针移动到某个位置
         
-增删改查：    
+# 增删改查：    
        import pymysql
        conn = pymysql.connect(host='localhost',port=3306,user='root',passwd='root',charset='utf8')
        cur = conn.cursor()
@@ -47,7 +47,7 @@ mysql与python3交互：
             cur.execute(sql,[name])
             conn.commit()
     
-封装：
+# 封装：
     以面向对象的形式，封装一个对mysql增删改查的类。
                 
         

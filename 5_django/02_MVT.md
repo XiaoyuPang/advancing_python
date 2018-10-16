@@ -1,4 +1,4 @@
-模型M：
+# 模型M：
     django连接mysql：
         1.mysql-python不支持django2.0，使用mysqlclient代替：
         	$sudo apt install  libmysqlclient-dev
@@ -48,7 +48,7 @@
 		
 		聚合：
 
-视图V：
+# 视图V：
 	一个http请求经过django处理，拿到地址，首先到settings的ROOT_URLCONF，映射到urls.py文件，经过正则匹配，
 	然后由定义的路由函数返回响应。如果正则匹配包含一个()括号，即接受来自请求的一个参数，则路由函数有两个参数，
 	一个是request，另一个是接收参数。
@@ -86,7 +86,7 @@
 				我们可以指定session的存储路径，settings自定义配置，比如把session存储在redis需要安装redis数据库和下面这个包：
 					$pip3 install django-redis-sessions
 				
-模板T：
+# 模板T：
 	作为web框架，django提供了模板，也已便利的动态生成html。模板系统致力于表达外观，而不是程序逻辑。django的模板语言，包括：
 		1.变量{{ }}
 		2.标签{% %}，有for，if，comment ，include，url反向解析，csrf_token，布尔标签，block，extends，autoescape
